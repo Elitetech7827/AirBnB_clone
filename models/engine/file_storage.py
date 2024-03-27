@@ -22,8 +22,8 @@ class FileStorage:
         """
         Sets in __objects the obj with key <obj class name>.id
         """
-        obj_class_name = obj.__class__.__name__
-        key = "{}.{}".format(obj_class_name, obj.id)
+        obj_cls_name = obj.__class__.__name__
+        key = "{}.{}".format(obj_cls_name, obj.id)
         FileStorage.__objects[key] = obj
 
     def all(self):
@@ -63,6 +63,7 @@ class FileStorage:
                         cls = eval(class_name)
 
                         instance = cls(**values)
+
                         FileStorage.__objects[key] = instance
                 except FileNotFoundError:
                     pass
